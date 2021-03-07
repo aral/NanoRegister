@@ -85,6 +85,18 @@ input {
     width: 230px;
 }
 
+select {
+    border: 1px solid #d3d3d3;
+    border-radius: 30px;
+    font-size: 16px;
+    padding: 10px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 16px;
+    outline: none;
+    width: 250px;
+    color: gray;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -109,11 +121,11 @@ input[type=number] {
 #wallet-btn {
     background-color: #4A90E2;
     color: white;
-    border-radius:30px;
+    border-radius:8px;
     border: none;
     padding: 15px;
     font-size: 18px;
-    width: 250px;
+    width: 300px;
     outline: none;
 }
 
@@ -129,4 +141,49 @@ input[type=number] {
     display: block;
     color:rgb(255, 255, 255);
     text-decoration: none;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    overflow-wrap: break-word;
+    border-radius: 8px;
+    width: 300px;
+    
+    padding: 16px;
+    background-color: white;
+}
+
+#cancel-btn {
+    background-color: white;
+    color: red;
+    border-radius:8px;
+    border: 1px solid red;
+    padding: 15px;
+    font-size: 18px;
+    width: 285px;
+    outline: none;
+}
+
+#cancel-btn:hover {
+    background-color: rgb(252, 94, 94);
+    color: white;
+}
+
+#cancel-btn:active {
+    transform: scale(0.9);
 }
