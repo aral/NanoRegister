@@ -78,7 +78,7 @@ function cancelPayment() {
 
     fetch("https://gonano.dev/payment/cancel", {
     "referrerPolicy": "strict-origin-when-cross-origin",
-    "body": "{\"id\":\"IOco7OlzvbU\"}",
+    "body": "{\"id\":\"" + paymentID + "\"}",
     "method": "POST",
     "mode": "cors",
     "credentials": "omit"
