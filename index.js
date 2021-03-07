@@ -46,7 +46,10 @@ function createPayment()  {
             console.log("Payment Address: " + paymentAddress);
             paymentID = data.id;
             console.log("Payment ID: " + paymentID);
-            //wait();
+
+            //This function is not working :(
+            wait();
+
             sessionStorage.setItem("link", "nano://" + paymentAddress + "?amount=" + amount.toLocaleString('fullwide', { useGrouping: false }));
             console.log(sessionStorage.getItem("link"));
             document.getElementById('amount-input').value = "";
@@ -75,7 +78,7 @@ function cancelPayment() {
 
     fetch("https://gonano.dev/payment/cancel", {
     "referrerPolicy": "strict-origin-when-cross-origin",
-    "body": "{\"id\":\"" + paymentID + "\"}",
+    "body": "{\"id\":\"IOco7OlzvbU\"}",
     "method": "POST",
     "mode": "cors",
     "credentials": "omit"
