@@ -127,7 +127,9 @@ async function createPayment()  {
             document.getElementById('amount-input').value = "";
             document.getElementById("qrcode").innerHTML = ""; 
             document.getElementById('name-output').innerHTML = "Pay " + sessionStorage.getItem("merchantName");
-            document.getElementById('address-output').innerHTML = paymentAddress;
+            document.getElementById('address-output-beginning').innerHTML = paymentAddress.substring(0, 10);
+            document.getElementById('address-output-middle').innerHTML = paymentAddress.substring(10, paymentAddress.length-5);
+            document.getElementById('address-output-end').innerHTML = paymentAddress.substring(paymentAddress.length-5, paymentAddress.length);
             var qrcode = new QRCode(document.getElementById("qrcode"), {
                 text: sessionStorage.getItem("link"),
                 width: 268,

@@ -273,3 +273,15 @@ input[type=number] {
     0%   {width: 80%;}
     0%   {width: 100%;}
 }
+
+#address-output-beginning {
+    color: #4A90E2;
+}
+
+#address-output-end {
+    color: #4A90E2;
+}
+
+#address-output-div {
+    margin-bottom: 16px;
+}
