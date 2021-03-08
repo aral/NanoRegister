@@ -95,6 +95,7 @@ select {
     outline: none;
     width: 250px;
     color: gray;
+    -webkit-appearance: none;
 }
 
 input::-webkit-outer-spin-button,
