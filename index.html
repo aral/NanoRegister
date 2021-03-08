@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA==" crossorigin="anonymous"></script>
@@ -25,7 +24,7 @@
                 <select name="local-currency" id="local-currency-select">
                     <option value="USD">US Dollar</option>
                     <option value="IDR">Indonesian Rupiah</option>
-                    <option value="TWD">Taiwan Dollar</option>
+                    <option value="TWD">New Taiwan Dollar</option>
                     <option value="EUR">Euro</option>
                     <option value="KRW">South Korean Won</option>
                     <option value="JPY">Japanese Yen</option>
@@ -64,7 +63,7 @@
                     <option value="SGD">Singapore Dollar</option>
                     <option value="THB">Thai Baht</option>
                     <option value="TRY">Turkish Lira</option>
-                    <option value="TRY">Turkish Lira</option>
+                    <option value="UAH">Ukrainian hryvnia</option>
                     <option value="VEF">Venezuelan bolívar fuerte</option>
                     <option value="VND">Vietnamese đồng</option>
                     <option value="ZAR">South African Rand</option>
@@ -79,6 +78,10 @@
             <div class="modal-content">
                 <div class="outer">
                     <div class="middle">
+                        <p id="payment-successful-output">Payment Was Received Successfully</p>
+                        <div id="payment-close-progress-bar-div">
+                            <div id="payment-close-progress-bar"></div>
+                        </div>
                         <div class="centered-div">
                             <div id="natricon-border">
                                 <div id="qrcode"></div>
@@ -88,6 +91,12 @@
                             <p id="address-output">Address</p>
                             <button id="cancel-btn" onclick="cancelPayment()">Cancel</button>
                         </div>
+                        <p id="countdown">00:00</p>
+                        <p id="payment-unsuccessful-output">Transaction Has Expired</p>
+                        <div id="payment-unsuccessful-progress-bar-div">
+                            <div id="payment-unsuccessful-progress-bar"></div>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>

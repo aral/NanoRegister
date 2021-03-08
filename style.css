@@ -187,3 +187,89 @@ input[type=number] {
 #cancel-btn:active {
     transform: scale(0.9);
 }
+
+#payment-successful-output {
+    color: darkgreen;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    overflow-wrap: break-word;
+    border-radius: 8px;
+    width: 300px;
+    margin-bottom: 7px;
+    padding: 16px;
+    background-color: rgb(107, 252, 94);
+    display: none;
+}
+
+#payment-close-progress-bar-div {
+    width: 316px;
+    height: 3px;
+    border-radius: 30px;
+    background-color: rgb(107, 252, 94);
+    margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+}
+
+#payment-close-progress-bar {
+    width: 0%;
+    height: 3px;
+    background-color: darkgreen;
+    animation-name: progress;
+    animation-duration: 5s;
+}
+
+@keyframes progress {
+    0%   {width: 20%;}
+    0%   {width: 40%;}
+    0%   {width: 60%;}
+    0%   {width: 80%;}
+    0%   {width: 100%;}
+}
+
+#countdown {
+    color: white;
+}
+
+#payment-unsuccessful-output {
+    color: rgb(100, 0, 0);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    overflow-wrap: break-word;
+    border-radius: 8px;
+    width: 300px;
+    margin-bottom: 7px;
+    padding: 16px;
+    background-color: rgb(252, 94, 94);
+    display: none;
+}
+
+#payment-unsuccessful-progress-bar-div {
+    width: 316px;
+    height: 3px;
+    border-radius: 30px;
+    background-color: rgb(252, 94, 94);
+    margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+}
+
+#payment-unsuccessful-progress-bar {
+    width: 0%;
+    height: 3px;
+    background-color: rgb(100, 0, 0);
+    animation-name: expired;
+    animation-duration: 5s;
+}
+
+@keyframes expired {
+    0%   {width: 20%;}
+    0%   {width: 40%;}
+    0%   {width: 60%;}
+    0%   {width: 80%;}
+    0%   {width: 100%;}
+}
