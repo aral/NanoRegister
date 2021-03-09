@@ -58,11 +58,11 @@ async function createPayment()  {
     document.getElementById("amount-input-modal").style.display = "none";
     document.getElementById("payment-modal").style.display = "block";
     await getPrice();
-    console.log("Merchant Address: " + sessionStorage.getItem("merchantAddress"))
+    console.log("Merchant Address: " + localStorage.getItem("merchantAddress"))
     await fetch("https://gonano.dev/payment/new", {
     "referrer": "https://gonano.dev/",
     "referrerPolicy": "strict-origin-when-cross-origin",
-    "body": "{\"account\":\"" + sessionStorage.getItem("merchantAddress") + "\",\"amount\":\""+ sessionStorage.getItem("amount") + "\"}",
+    "body": "{\"account\":\"" + localStorage.getItem("merchantAddress") + "\",\"amount\":\""+ sessionStorage.getItem("amount") + "\"}",
     "method": "POST",
     "mode": "cors",
     "credentials": "omit"
@@ -77,7 +77,7 @@ async function createPayment()  {
         sessionStorage.setItem("link", "nano://" + paymentAddress + "?amount=" + rawAmount.toLocaleString('fullwide', { useGrouping: false }));
         console.log(sessionStorage.getItem("link"));
         document.getElementById("qrcode").innerHTML = ""; 
-        document.getElementById('name-output').innerHTML = "Pay " + sessionStorage.getItem("merchantName");
+        document.getElementById('name-output').innerHTML = "Pay " + localStorage.getItem("merchantName");
         document.getElementById('address-output-beginning').innerHTML = paymentAddress.substring(0, 10);
         document.getElementById('address-output-middle').innerHTML = paymentAddress.substring(10, paymentAddress.length-5);
         document.getElementById('address-output-end').innerHTML = paymentAddress.substring(paymentAddress.length-5, paymentAddress.length);
@@ -139,10 +139,15 @@ async function wait() {
     });
 }
 
+document.addEventListener("DOMContentLoaded", function(){
+    document.getElementById('merchant-name-input').value = localStorage.getItem("merchantName");
+    document.getElementById('merchant-address-input').value = localStorage.getItem("merchantAddress");
+});
+
 function getAmount() {
-    sessionStorage.setItem("merchantName", document.getElementById('merchant-name-input').value);
-    sessionStorage.setItem("merchantAddress", document.getElementById('merchant-address-input').value);
-    if (sessionStorage.getItem("merchantName") != "" && sessionStorage.getItem("merchantAddress") != "" && sessionStorage.getItem("amount") != "") {
+    localStorage.setItem("merchantName", document.getElementById('merchant-name-input').value);
+    localStorage.setItem("merchantAddress", document.getElementById('merchant-address-input').value);
+    if (localStorage.getItem("merchantName") != "" && localStorage.getItem("merchantAddress") != "" && sessionStorage.getItem("amount") != "") {
         document.getElementById("amount-input-modal").style.display = "block";
         currencySymbol = "";
         if (document.getElementById("local-currency-select").value == "USD") {currencySymbol = "$"};
