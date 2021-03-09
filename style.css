@@ -286,3 +286,53 @@ input[type=number] {
 #address-output-div {
     margin-bottom: 16px;
 }
+
+#numpad-container {
+    background-color: black;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.numpad-row {
+    display: flex;
+    width: 100%;
+}
+
+.numpad-btn {
+    background-color: white;
+    font-size: 24px;
+    color: black;
+    text-align: center;
+    width: 115px;
+    height: 80px;
+    border: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+}
+
+.numpad-btn:active {
+    color: grey;
+}
+
+#amount-display {
+    padding-top: 32px;
+    font-size: 36px;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+}
+
+#checkout-btn {
+    width: 306px;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4A90E2;
+    color: white;
+    font-size: 20px;
+    outline: none;
+}
+
+#checkout-btn:active {
+    transform: scale(0.9);
+}

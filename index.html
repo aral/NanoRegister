@@ -69,12 +69,12 @@
                     <option value="ZAR">South African Rand</option>
                     <option value="XDR">IMF Special Drawing Rights</option>
                 </select>
-                <input id="amount-input" type="number" placeholder="Amount (FIAT)" step="0.01">
-                <button id="submit-btn" onclick="createPayment()">Submit</button>
+                <!--<input id="amount-input" type="number" placeholder="Amount (FIAT)" step="0.01">-->
+                <button id="submit-btn" onclick="getAmount()">Submit</button>
             </div>
             <a id="donate-link" href="./donate.html">Donate</a>
         </div>
-        <div id="modal" class="modal">
+        <div id="payment-modal" class="modal">
             <div class="modal-content">
                 <div class="outer">
                     <div class="middle">
@@ -99,6 +99,41 @@
                             <div id="payment-unsuccessful-progress-bar"></div>
                         </div>
                     </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="amount-input-modal" class="modal">
+            <div class="modal-content">
+                <div class="outer">
+                    <div class="middle">
+                        <div class="centered-div">
+                            <h1 id="amount-display">0</h1>
+                            <div id="numpad-container">
+                                <div class="numpad-row">
+                                    <button class="numpad-btn" id="one-button" onclick="addOne();">1</button>
+                                    <button class="numpad-btn" id="two-button" onclick="addTwo();">2</button>
+                                    <button class="numpad-btn" id="three-button" onclick="addThree();">3</button>
+                                </div>
+                                <div class="numpad-row">
+                                    <button class="numpad-btn" id="four-button" onclick="addFour();">4</button>
+                                    <button class="numpad-btn" id="five-button" onclick="addFive();">5</button>
+                                    <button class="numpad-btn" id="six-button" onclick="addSix();">6</button>
+                                </div>
+                                <div class="numpad-row">
+                                    <button class="numpad-btn" id="seven-button" onclick="addSeven();">7</button>
+                                    <button class="numpad-btn" id="eight-button" onclick="addEight();">8</button>
+                                    <button class="numpad-btn" id="nine-button" onclick="addNine();">9</button>
+                                </div>
+                                <div class="numpad-row">
+                                    <button class="numpad-btn" id="decimal-button" onclick="addDecimal();">.</button>
+                                    <button class="numpad-btn" id="zero-button" onclick="addZero();">0</button>
+                                    <button class="numpad-btn" id="back-button" onmousedown="back();" onmouseup="cancelBack()">&lt;</button>
+                                </div>
+                            </div>
+                            <button id="checkout-btn" onclick="createPayment()">Checkout</button>
+                        </div>
                     </div>
                 </div>
             </div>
