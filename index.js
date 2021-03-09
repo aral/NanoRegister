@@ -20,7 +20,7 @@ async function getPrice() {
         currency = currency.toLowerCase();
         console.log("Nano in Fiat: " + data.nano[currency]);
         console.log("Fiat Amount: " + sessionStorage.getItem("amount"));
-        document.getElementById("amount-output").innerHTML = currencySymbol + parseFloat(sessionStorage.getItem("amount")).toFixed(2);
+        document.getElementById("amount-output").innerHTML = currencySymbol + parseFloat(sessionStorage.getItem("amount")).toFixed(2) + " - " + (sessionStorage.getItem("amount")/data.nano[currency]).toFixed(6) + " NANO";
         amount = (sessionStorage.getItem("amount")/data.nano[currency]).toFixed(6);
         console.log("NANO amount:" + amount);
         sessionStorage.setItem("amount", amount);
