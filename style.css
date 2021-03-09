@@ -2,6 +2,7 @@ body {
     font-family: 'Inter', sans-serif;
     -webkit-appearance: none;
     overflow: hidden;
+    -webkit-touch-callout: none;
 }
 
 .centered-div {
@@ -117,31 +118,6 @@ input[type=number] {
     font-family: 'Inter', sans-serif;
     margin-bottom: 16px;
     outline: none;
-}
-
-#wallet-btn {
-    background-color: #4A90E2;
-    color: white;
-    border-radius:8px;
-    border: none;
-    padding: 15px;
-    font-size: 18px;
-    width: 300px;
-    outline: none;
-}
-
-#wallet-btn:active {
-    transform: scale(0.9);
-}
-
-#donate-link {
-    margin-top: 16px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    display: block;
-    color:rgb(255, 255, 255);
-    text-decoration: none;
 }
 
 .modal {
@@ -309,6 +285,8 @@ input[type=number] {
     outline: none;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
+    touch-action: manipulation;
+    -webkit-user-select: none;
 }
 
 .numpad-btn:active {
@@ -331,8 +309,13 @@ input[type=number] {
     color: white;
     font-size: 20px;
     outline: none;
+    -webkit-user-select: none;
 }
 
 #checkout-btn:active {
     transform: scale(0.9);
+}
+
+#countdown {
+    display: none;
 }

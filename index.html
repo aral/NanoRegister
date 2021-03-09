@@ -72,7 +72,6 @@
                 <!--<input id="amount-input" type="number" placeholder="Amount (FIAT)" step="0.01">-->
                 <button id="submit-btn" onclick="getAmount()">Submit</button>
             </div>
-            <a id="donate-link" href="./donate.html">Donate</a>
         </div>
         <div id="payment-modal" class="modal">
             <div class="modal-content">
@@ -81,6 +80,10 @@
                         <p id="payment-successful-output">Payment Was Received Successfully</p>
                         <div id="payment-close-progress-bar-div">
                             <div id="payment-close-progress-bar"></div>
+                        </div>
+                        <p id="payment-unsuccessful-output">Transaction Has Expired</p>
+                        <div id="payment-unsuccessful-progress-bar-div">
+                            <div id="payment-unsuccessful-progress-bar"></div>
                         </div>
                         <div class="centered-div">
                             <div id="natricon-border">
@@ -94,10 +97,6 @@
                             <button id="cancel-btn" onclick="cancelPayment()">Cancel</button>
                         </div>
                         <p id="countdown">00:00</p>
-                        <p id="payment-unsuccessful-output">Transaction Has Expired</p>
-                        <div id="payment-unsuccessful-progress-bar-div">
-                            <div id="payment-unsuccessful-progress-bar"></div>
-                        </div>
                     </div>
                     </div>
                 </div>
