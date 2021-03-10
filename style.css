@@ -319,3 +319,28 @@ input[type=number] {
 #countdown {
     display: none;
 }
+
+#repo-link {
+    position: fixed;
+    bottom: 0;
+    right: 16px;
+    margin-bottom: 16px;
+    text-align: right;
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+    border-bottom: solid;
+    border-width: 2px;
+    border-color: white;
+}
+
+@media only screen and (max-width: 500px) {
+    #repo-link {
+      display: none;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    #repo-link {
+      display: block;
+    }
+}
