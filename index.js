@@ -147,17 +147,12 @@ document.addEventListener("DOMContentLoaded", function(){
 function getAmount() {
     localStorage.setItem("merchantName", document.getElementById('merchant-name-input').value);
     localStorage.setItem("merchantAddress", document.getElementById('merchant-address-input').value);
-    if (localStorage.getItem("merchantAddress").length != 65) {
+    var isValidAddress = /^(nano|xrb)_[13]{1}[13456789abcdefghijkmnopqrstuwxyz]{59}$/.test
+    //TODO: Add checksum to ensure the 8 characters at the end are legit.
+    (localStorage.getItem("merchantAddress"));
+    if (isValidAddress == false) {
         alert("Address incorrect");
-    } else if (hasUpperCase(localStorage.getItem("merchantAddress"))) {
-        alert("Address incorrect");
-    } else if (localStorage.getItem("merchantAddress").substring(0, 5) != "nano_") {
-        alert("Address incorrect");
-    } else if ((localStorage.getItem("merchantAddress").substring(5, 6) != 1) && (localStorage.getItem("merchantAddress").substring(5, 6) != 3)) {
-        alert("Address incorrect");
-    } else if (localStorage.getItem("merchantAddress").includes("0") || localStorage.getItem("merchantAddress").includes("2") || localStorage.getItem("merchantAddress").includes("l") || localStorage.getItem("merchantAddress").includes("v")) {
-        alert("Address incorrect");
-    } else { //TODO: Add checksum to ensure the 8 characters at the end are legit.
+    } else { 
         if (localStorage.getItem("merchantName") != "" && localStorage.getItem("merchantAddress") != "" && sessionStorage.getItem("amount") != "") {
             document.getElementById("amount-input-modal").style.display = "block";
             currencySymbol = "";
