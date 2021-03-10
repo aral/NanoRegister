@@ -147,59 +147,71 @@ document.addEventListener("DOMContentLoaded", function(){
 function getAmount() {
     localStorage.setItem("merchantName", document.getElementById('merchant-name-input').value);
     localStorage.setItem("merchantAddress", document.getElementById('merchant-address-input').value);
-    if (localStorage.getItem("merchantName") != "" && localStorage.getItem("merchantAddress") != "" && sessionStorage.getItem("amount") != "") {
-        document.getElementById("amount-input-modal").style.display = "block";
-        currencySymbol = "";
-        if (document.getElementById("local-currency-select").value == "USD") {currencySymbol = "$"};
-        if (document.getElementById("local-currency-select").value == "IDR") {currencySymbol = "Rp"};
-        if (document.getElementById("local-currency-select").value == "TWD") {currencySymbol = "NT$"};
-        if (document.getElementById("local-currency-select").value == "EUR") {currencySymbol = "€"};
-        if (document.getElementById("local-currency-select").value == "KRW") {currencySymbol = "₩"};
-        if (document.getElementById("local-currency-select").value == "JPY") {currencySymbol = "¥"};
-        if (document.getElementById("local-currency-select").value == "RUB") {currencySymbol = "₽"};
-        if (document.getElementById("local-currency-select").value == "CNY") {currencySymbol = "¥"};
-        if (document.getElementById("local-currency-select").value == "AED") {currencySymbol = "د.إ"};
-        if (document.getElementById("local-currency-select").value == "ARS") {currencySymbol = "$"};
-        if (document.getElementById("local-currency-select").value == "AUD") {currencySymbol = "$"};
-        if (document.getElementById("local-currency-select").value == "BDT") {currencySymbol = "৳"};
-        if (document.getElementById("local-currency-select").value == "BHD") {currencySymbol = ".د.ب"};
-        if (document.getElementById("local-currency-select").value == "BMD") {currencySymbol = "$"};
-        if (document.getElementById("local-currency-select").value == "BRL") {currencySymbol = "R$"};
-        if (document.getElementById("local-currency-select").value == "CAD") {currencySymbol = "$"};
-        if (document.getElementById("local-currency-select").value == "CHF") {currencySymbol = "Fr."};
-        if (document.getElementById("local-currency-select").value == "CLP") {currencySymbol = "$"};
-        if (document.getElementById("local-currency-select").value == "CZK") {currencySymbol = "Kč"};
-        if (document.getElementById("local-currency-select").value == "DKK") {currencySymbol = "Kr."};
-        if (document.getElementById("local-currency-select").value == "GBP") {currencySymbol = "£"};
-        if (document.getElementById("local-currency-select").value == "HKD") {currencySymbol = "$"};
-        if (document.getElementById("local-currency-select").value == "HUF") {currencySymbol = "Ft"};
-        if (document.getElementById("local-currency-select").value == "ILS") {currencySymbol = "₪"};
-        if (document.getElementById("local-currency-select").value == "INR") {currencySymbol = "₹"};
-        if (document.getElementById("local-currency-select").value == "KWD") {currencySymbol = "د.ك"};
-        if (document.getElementById("local-currency-select").value == "LKR") {currencySymbol = "රු"};
-        if (document.getElementById("local-currency-select").value == "MMK") {currencySymbol = "K"};
-        if (document.getElementById("local-currency-select").value == "MXN") {currencySymbol = "$"};
-        if (document.getElementById("local-currency-select").value == "MYR") {currencySymbol = "RM"};
-        if (document.getElementById("local-currency-select").value == "NGN") {currencySymbol = "₦"};
-        if (document.getElementById("local-currency-select").value == "NOK") {currencySymbol = "kr"};
-        if (document.getElementById("local-currency-select").value == "NZD") {currencySymbol = "$"};
-        if (document.getElementById("local-currency-select").value == "PHP") {currencySymbol = "₱"};
-        if (document.getElementById("local-currency-select").value == "PKR") {currencySymbol = "₨"};
-        if (document.getElementById("local-currency-select").value == "PLN") {currencySymbol = "zł"};
-        if (document.getElementById("local-currency-select").value == "SAR") {currencySymbol = "ر.س"};
-        if (document.getElementById("local-currency-select").value == "SEK") {currencySymbol = "kr"};
-        if (document.getElementById("local-currency-select").value == "SGD") {currencySymbol = "$"};
-        if (document.getElementById("local-currency-select").value == "THB") {currencySymbol = "฿"};
-        if (document.getElementById("local-currency-select").value == "TRY") {currencySymbol = "₺"};
-        if (document.getElementById("local-currency-select").value == "UAH") {currencySymbol = "₴"};
-        if (document.getElementById("local-currency-select").value == "VEF") {currencySymbol = "Bs"};
-        if (document.getElementById("local-currency-select").value == "VND") {currencySymbol = "₫"};
-        if (document.getElementById("local-currency-select").value == "ZAR") {currencySymbol = "R"};
-        if (document.getElementById("local-currency-select").value == "XDR") {currencySymbol = "XDR"};
-        amountString = "0";
-        document.getElementById("amount-display").innerHTML = currencySymbol + amountString;
-    } else {
-        alert("Please enter all fields")
+    if (localStorage.getItem("merchantAddress").length != 65) {
+        alert("Address incorrect");
+    } else if (hasUpperCase(localStorage.getItem("merchantAddress"))) {
+        alert("Address incorrect");
+    } else if (localStorage.getItem("merchantAddress").substring(0, 5) != "nano_") {
+        alert("Address incorrect");
+    } else if ((localStorage.getItem("merchantAddress").substring(5, 6) != 1) && (localStorage.getItem("merchantAddress").substring(5, 6) != 3)) {
+        alert("Address incorrect");
+    } else if (localStorage.getItem("merchantAddress").includes("0") || localStorage.getItem("merchantAddress").includes("2") || localStorage.getItem("merchantAddress").includes("l") || localStorage.getItem("merchantAddress").includes("v")) {
+        alert("Address incorrect");
+    } else { //TODO: Add checksum to ensure the 8 characters at the end are legit.
+        if (localStorage.getItem("merchantName") != "" && localStorage.getItem("merchantAddress") != "" && sessionStorage.getItem("amount") != "") {
+            document.getElementById("amount-input-modal").style.display = "block";
+            currencySymbol = "";
+            if (document.getElementById("local-currency-select").value == "USD") {currencySymbol = "$"};
+            if (document.getElementById("local-currency-select").value == "IDR") {currencySymbol = "Rp"};
+            if (document.getElementById("local-currency-select").value == "TWD") {currencySymbol = "NT$"};
+            if (document.getElementById("local-currency-select").value == "EUR") {currencySymbol = "€"};
+            if (document.getElementById("local-currency-select").value == "KRW") {currencySymbol = "₩"};
+            if (document.getElementById("local-currency-select").value == "JPY") {currencySymbol = "¥"};
+            if (document.getElementById("local-currency-select").value == "RUB") {currencySymbol = "₽"};
+            if (document.getElementById("local-currency-select").value == "CNY") {currencySymbol = "¥"};
+            if (document.getElementById("local-currency-select").value == "AED") {currencySymbol = "د.إ"};
+            if (document.getElementById("local-currency-select").value == "ARS") {currencySymbol = "$"};
+            if (document.getElementById("local-currency-select").value == "AUD") {currencySymbol = "$"};
+            if (document.getElementById("local-currency-select").value == "BDT") {currencySymbol = "৳"};
+            if (document.getElementById("local-currency-select").value == "BHD") {currencySymbol = ".د.ب"};
+            if (document.getElementById("local-currency-select").value == "BMD") {currencySymbol = "$"};
+            if (document.getElementById("local-currency-select").value == "BRL") {currencySymbol = "R$"};
+            if (document.getElementById("local-currency-select").value == "CAD") {currencySymbol = "$"};
+            if (document.getElementById("local-currency-select").value == "CHF") {currencySymbol = "Fr."};
+            if (document.getElementById("local-currency-select").value == "CLP") {currencySymbol = "$"};
+            if (document.getElementById("local-currency-select").value == "CZK") {currencySymbol = "Kč"};
+            if (document.getElementById("local-currency-select").value == "DKK") {currencySymbol = "Kr."};
+            if (document.getElementById("local-currency-select").value == "GBP") {currencySymbol = "£"};
+            if (document.getElementById("local-currency-select").value == "HKD") {currencySymbol = "$"};
+            if (document.getElementById("local-currency-select").value == "HUF") {currencySymbol = "Ft"};
+            if (document.getElementById("local-currency-select").value == "ILS") {currencySymbol = "₪"};
+            if (document.getElementById("local-currency-select").value == "INR") {currencySymbol = "₹"};
+            if (document.getElementById("local-currency-select").value == "KWD") {currencySymbol = "د.ك"};
+            if (document.getElementById("local-currency-select").value == "LKR") {currencySymbol = "රු"};
+            if (document.getElementById("local-currency-select").value == "MMK") {currencySymbol = "K"};
+            if (document.getElementById("local-currency-select").value == "MXN") {currencySymbol = "$"};
+            if (document.getElementById("local-currency-select").value == "MYR") {currencySymbol = "RM"};
+            if (document.getElementById("local-currency-select").value == "NGN") {currencySymbol = "₦"};
+            if (document.getElementById("local-currency-select").value == "NOK") {currencySymbol = "kr"};
+            if (document.getElementById("local-currency-select").value == "NZD") {currencySymbol = "$"};
+            if (document.getElementById("local-currency-select").value == "PHP") {currencySymbol = "₱"};
+            if (document.getElementById("local-currency-select").value == "PKR") {currencySymbol = "₨"};
+            if (document.getElementById("local-currency-select").value == "PLN") {currencySymbol = "zł"};
+            if (document.getElementById("local-currency-select").value == "SAR") {currencySymbol = "ر.س"};
+            if (document.getElementById("local-currency-select").value == "SEK") {currencySymbol = "kr"};
+            if (document.getElementById("local-currency-select").value == "SGD") {currencySymbol = "$"};
+            if (document.getElementById("local-currency-select").value == "THB") {currencySymbol = "฿"};
+            if (document.getElementById("local-currency-select").value == "TRY") {currencySymbol = "₺"};
+            if (document.getElementById("local-currency-select").value == "UAH") {currencySymbol = "₴"};
+            if (document.getElementById("local-currency-select").value == "VEF") {currencySymbol = "Bs"};
+            if (document.getElementById("local-currency-select").value == "VND") {currencySymbol = "₫"};
+            if (document.getElementById("local-currency-select").value == "ZAR") {currencySymbol = "R"};
+            if (document.getElementById("local-currency-select").value == "XDR") {currencySymbol = "XDR"};
+            amountString = "0";
+            document.getElementById("amount-display").innerHTML = currencySymbol + amountString;
+        } else {
+            alert("Please enter all fields")
+        }
     }
 }
 
@@ -442,4 +454,8 @@ function back() {
 function cancelBack() {
     clearTimeout(downTimeout);
     clearInterval(downTimer);
+}
+
+function hasUpperCase(str) {
+    return str.toLowerCase() != str;
 }
